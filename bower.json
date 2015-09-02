@@ -1,0 +1,22 @@
+{
+  "name": "AniManCenter",
+  "version": "0.0.0",
+  "authors": [
+    "FeMo.IO"
+  ],
+  "main": "app://host/src/app/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/app/plugins",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "marionette": "~2.4.1"
+  }
+}
