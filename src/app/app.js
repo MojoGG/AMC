@@ -1,5 +1,13 @@
-App =  new Backbone.Marionette.Application();
+'use strict';
 
-App.addRegions({
-    mainRegion: '#content'
-})
+var app = angular.module('AniMan', [
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ui.router',
+])
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider,$httpProvider) {
+
+        $urlRouterProvider.otherwise('/');
+        $locationProvider.html5Mode(true);
+    });
