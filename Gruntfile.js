@@ -10,7 +10,10 @@ module.exports = function(grunt) {
                 embed_nw: false,
             },
             src: [
-                './src/**',
+                './index.html',
+                './plugins/**',
+                './js/**',
+                './view/**',
                 './package.json'
             ]
         },
@@ -19,7 +22,7 @@ module.exports = function(grunt) {
                 // Point to the files that should be updated when
                 // you run `grunt wiredep`
                 src: [
-                    'src/app/index.html'
+                    'index.html'
                 ],
                 options: {
                     // See wiredep's configuration documentation for the options

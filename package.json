@@ -2,7 +2,7 @@
   "name": "AniManCenter",
   "version": "0.0.0",
   "description": "A Center for you Manga and Anime",
-  "main": "app://host/src/app/index.html",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -3,4 +3,4 @@ build
 cache
 .tmp
 .idea
-src/app/plugins
+plugins
