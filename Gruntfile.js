@@ -14,6 +14,7 @@ module.exports = function(grunt) {
                 './plugins/**',
                 './js/**',
                 './view/**',
+                './img/**',
                 './package.json'
             ]
         },

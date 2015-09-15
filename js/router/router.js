@@ -5,11 +5,11 @@ app.config(function ($stateProvider,$urlRouterProvider) {
             url:'/',
             templateUrl: './view/home.html',
             controller: 'homeController'
-        }).state('about', {
-            url:'/about',
-            templateUrl: './view/about.html',
-            controller: 'aboutController'
-        })
+        }).state('manga',{
+            url:'/manga?mid',
+            templateUrl: './view/singleManga.html',
+            controller:'singleMangaController'
+        });
 
     $urlRouterProvider.otherwise("/");
 });

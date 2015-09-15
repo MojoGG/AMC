@@ -9,5 +9,16 @@
     </ol>
 </section>
 <secction class="content">
-    <p>{{list}}</p>
+    <div ng-show="mangas.length == 0">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+    </div>
+    <div ng-show="mangas.length > 0" infinite-scroll='loadMore()' infinite-scroll-disabled="scrollstop">
+        <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat="item in mangas track by $index">
+                <div class="-align-center text-center">
+                    <a ui-sref='manga({ mid: {{$index}} })'><img ng-src="./img/placeholder-100x150.png" alt="{{item.title}}"></a>
+                    <h4>{{item.title}}</h4>
+                </div>
+        </div>
+        <div style='clear: both;'></div>
+    </div>
 </secction>

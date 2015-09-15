@@ -2,5 +2,6 @@
 
 var app = angular.module('AniMan', [
     'ngResource',
-    'ui.router'
+    'ui.router',
+    'infinite-scroll'
 ]);
