@@ -10,15 +10,15 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src/app/plugins",
     "test",
     "tests"
   ],
   "dependencies": {
+    "AdminLTE": "admin-lte#~2.3.0",
     "angular": ">=1.2.*",
     "angular-resource": ">=1.2.*",
     "angular-ui-router": "~0.2.15",
-    "bootstrap": "~3.3.5",
+    "bootstrap": "3.3.4",
     "es5-shim": "~3.0.1",
     "font-awesome": "~4.4.0",
     "jquery": "~1.11.0",

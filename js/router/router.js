@@ -9,7 +9,14 @@ app.config(function ($stateProvider,$urlRouterProvider) {
             url:'/manga?mid',
             templateUrl: './view/singleManga.html',
             controller:'singleMangaController'
-        });
+        }).state('nyi',{
+            url:'/nyi?version',
+            templateUrl: './view/nyi.html',
+            controller:'nyiController',
+            params:{
+                version:'0.0'
+            }
+        })
 
     $urlRouterProvider.otherwise("/");
 });

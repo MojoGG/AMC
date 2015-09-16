@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <base href="./index.html#/" >
-    <link rel="stylesheet" href="plugins/AdminLTE/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="plugins/AdminLTE/dist/css/AdminLTE.min.css">
 
-    <link rel="stylesheet" href="plugins/AdminLTE/dist/css/skins/skin-blue.min.css">
+    <!--CSS -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="plugins/AdminLTE/dist/css/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="plugins/AdminLTE/dist/css/AdminLTE.css" />
+    <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
 
     <!-- HTML5 Shim and Respond.fs IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,7 +20,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini" data-ng-controller="mainController">
+<body class="skin-blue hold-transition sidebar-mini" data-ng-controller="mainController">
 
 <!-- content -->
 <div class="wrapper">
@@ -214,13 +217,13 @@
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                <li class="active"><a ui-sref="/"><i class="fa fa-pencil"></i> <span>Mangas</span></a></li>
+                <li><a ui-sref="nyi"><i class="fa fa-video-camera"></i> <span>Anime</span></a></li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a ui-sref="nyi"><i class="fa fa-cogs"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a ui-sref="nyi">General Settings</a></li>
+                        <li><a ui-sref="nyi">Sources</a></li>
                     </ul>
                 </li>
             </ul><!-- /.sidebar-menu -->
@@ -311,6 +314,7 @@
 <!-- bower:js -->
 <script src="plugins/es5-shim/es5-shim.js"></script>
 <script src="plugins/jquery/dist/jquery.js"></script>
+<script src="plugins/AdminLTE/dist/js/app.js"></script>
 <script src="plugins/angular/angular.js"></script>
 <script src="plugins/angular-resource/angular-resource.js"></script>
 <script src="plugins/angular-ui-router/release/angular-ui-router.js"></script>
@@ -321,9 +325,6 @@
 <script src="plugins/q/q.js"></script>
 <!-- endbower -->
 
-<!-- 3rd party Dependencies -->
-<script src="plugins/AdminLTE/dist/js/app.min.js"></script>
-
 <!-- Main App -->
 <script src="js/app.js"></script>
 <script src="js/router/router.js"></script>
@@ -332,6 +333,7 @@
 <script src="js/controller/home.js"></script>
 <script src="js/controller/main.js"></script>
 <script src="js/controller/singleMangaController.js"></script>
+<script src="js/controller/nyiController.js"></script>
 
 <!-- Provider -->
 <script src="js/prodivder/mangalist.js"></script>

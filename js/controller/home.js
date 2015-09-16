@@ -1,4 +1,7 @@
-app.controller("homeController", function ($scope,mangaListFactory) {
+var Xray = require('x-ray');
+var X = Xray();
+
+app.controller("homeController", function ($scope,mangaListFactory,$q) {
     $scope.mangas = new Array();
     $scope.scrollstop = true;
     $scope.list;
@@ -6,15 +9,24 @@ app.controller("homeController", function ($scope,mangaListFactory) {
         //console.log(data);
         //console.log(data.length)
         $scope.list = data;
-        $scope.mangas.push($scope.list[0]);
+        mangaListFactory.getSingleManga(0).then(function(data){
+            //console.log("Pushed New Manga");
+            //console.log(JSON.stringify(data))
+            // console.log(data["0"]["img"])
+            $scope.mangas.push(data);
+        });
         $scope.scrollstop = false;
     });
 
     $scope.loadMore = function(){
         var last = $scope.mangas.length - 1;
         for(var i = 1; i <= 10; i++) {
-            $scope.mangas.push($scope.list[last + i]);
-            console.log($scope.mangas[last+i]["title"])
+            mangaListFactory.getSingleManga(last+i).then(function(data){
+                console.log("Pushed New Manga");
+                //console.log(data["0"]["img"])
+                $scope.mangas.push(data);
+            });
+            //console.log($scope.mangas[last+i]["title"])
         }
     }
 });
