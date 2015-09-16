@@ -1,0 +1,7 @@
+<section class="content-header">
+</section>
+<secction class="content">
+    <div ng-repeat="img in chapter.images track by $index">
+        <img ng-if="img.nr == $index" ng-src="img.src"/>
+    </div>
+</secction>

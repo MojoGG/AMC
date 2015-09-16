@@ -26,24 +26,17 @@ app.factory('mangaListFactory',function($q){
         var defer = $q.defer();
         X(m["link"], 'div.left',[{
             img:'div.cover > img@src',
-            desc:'p.summary*'
+            desc:'p.summary*',
+            chapters:X('.chlist > li > div > h3 ',[{
+                title:'span.title*',
+                chapter:'a',
+                link:'a@href'
+            }])
         }])(function(err, obj) {
             console.log("Single Manga Download Done " + err);
-            //console.log(JSON.stringify(obj[0]))
-            defer.resolve(obj[0]);
+            //console.log(JSON.stringify(obj[1]["chapters"]));
+            defer.resolve(obj[1]);
         })
-        return defer.promise;
-    }
-
-    function loadMangaCover(m){
-        var defer = $q.defer();
-        X(m["link"], 'div.left',[{
-            img:'div.cover > img@src'
-        }])(function(err, obj) {
-            console.log("Cover Download Done " + err);
-            //console.log(JSON.stringify(obj))
-            defer.resolve(obj);
-        });
         return defer.promise;
     }
 
@@ -55,13 +48,16 @@ app.factory('mangaListFactory',function($q){
             return mangas.then(function(data){
                 //console.log(JSON.stringify(data))
                 return loadMangaDetail(data[id]).then(function(details){
-                    console.log(JSON.stringify(details));
-                    console.log(JSON.stringify(data[id]));
+                    //console.log(JSON.stringify(details));
+                    //console.log(JSON.stringify(data[id]));
                     mangas[id] = _.extend(data[id],details);
                     //console.log(JSON.stringify(mangas[id]))
                     return mangas[id];
                 })
             })
+        },
+        getChapter: function(mid, cid){
+
         }
     }
 })

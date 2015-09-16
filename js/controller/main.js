@@ -1,3 +1,3 @@
-app.controller("mainController", function ($scope,$location) {
+app.controller("mainController", function ($scope) {
     $scope.helloworld = "Test Hello World";
 });

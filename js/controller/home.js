@@ -1,7 +1,4 @@
-var Xray = require('x-ray');
-var X = Xray();
-
-app.controller("homeController", function ($scope,mangaListFactory,$q) {
+app.controller("homeController", function ($scope,mangaListFactory) {
     $scope.mangas = new Array();
     $scope.scrollstop = true;
     $scope.list;

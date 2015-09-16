@@ -12,8 +12,8 @@
         </div>
     </div>
     <div ng-show="manga != null">
-        <div class="row">
-            <div class="col-lg-10 col-md-8">
+        <div class="row col-lg-offset-1 col-md-offset-1">
+            <div class="col-lg-9 col-md-7">
                 <h4>Description</h4>
                 <p>{{manga.desc}}</p>
             </div>
@@ -21,8 +21,12 @@
                 <img ng-src="{{manga.img}}" alt="{{manga.title}}"/>
             </div>
         </div>
-        <div>
-
+        <div class="row col-lg-offset-1 col-md-offset-1">
+            <table>
+                <div ng-repeat="ch in manga.chapters">
+                    <p>{{ch.chapter}} {{ch.title}}</p>
+                </div>
+            </table>
         </div>
 </div>
     <div style='clear: both;'></div>
