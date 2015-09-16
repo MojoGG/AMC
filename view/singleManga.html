@@ -1,13 +1,29 @@
 <section class="content-header">
     <h1>
         {{manga.title}}
-        <small>Optional description</small>
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-    </ol>
 </section>
 <secction class="content">
+    <div ng-show="manga == null" class="overlay row text-center">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="box box-info"><h1> <i class="fa fa-refresh fa-spin"></i><br />
+                <small>Loading Manga details</small></h1></div>
 
+        </div>
+    </div>
+    <div ng-show="manga != null">
+        <div class="row">
+            <div class="col-lg-10 col-md-8">
+                <h4>Description</h4>
+                <p>{{manga.desc}}</p>
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <img ng-src="{{manga.img}}" alt="{{manga.title}}"/>
+            </div>
+        </div>
+        <div>
+
+        </div>
+</div>
+    <div style='clear: both;'></div>
 </secction>
