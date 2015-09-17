@@ -3,5 +3,6 @@
 var app = angular.module('AniMan', [
     'ngResource',
     'ui.router',
-    'infinite-scroll'
+    'infinite-scroll',
+    'cfp.hotkeys'
 ]);

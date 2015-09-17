@@ -60,6 +60,7 @@ app.factory('mangaListFactory',function($q){
                 img:'#image@src'
             }]).paginate('div#viewer > a@href').limit(data.length)(function(err,imgdata){
                 console.log(JSON.stringify(imgdata));
+                imgdata["count"] = data.length;
                 defer.resolve(imgdata);
             });
         })
