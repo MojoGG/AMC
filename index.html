@@ -219,7 +219,7 @@
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a ui-sref="/"><i class="fa fa-pencil"></i> <span>Mangas</span></a></li>
-                <li><a ui-sref="nyi"><i class="fa fa-video-camera"></i> <span>Anime</span></a></li>
+                <li><a ui-sref="anime"><i class="fa fa-video-camera"></i> <span>Anime</span></a></li>
                 <li class="treeview">
                     <a ui-sref="nyi"><i class="fa fa-cogs"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
@@ -329,14 +329,16 @@
 <script src="js/router/router.js"></script>
 
 <!-- Controller -->
-<script src="js/controller/home.js"></script>
+<script src="js/controller/manga/home.js"></script>
 <script src="js/controller/main.js"></script>
-<script src="js/controller/singleManga.js"></script>
+<script src="js/controller/manga/singleManga.js"></script>
 <script src="js/controller/nyi.js"></script>
-<script src="js/controller/reader.js"></script>
+<script src="js/controller/manga/reader.js"></script>
+<script src="js/controller/anime/home.js"></script>
 
 <!-- Provider -->
-<script src="js/prodivder/mangalist.js"></script>
+<script src="js/provider/mangalist.js"></script>
+<script src="js/provider/kissanime.js"></script>
 
 </body>
 </html>

@@ -5,9 +5,25 @@ AniMan Center is a Tool to read Mangas and watch Anime from a lot of different s
 Features
 --------
 Features with an (NYI) are **Not Yet Implemented**
- - Read Mangas from different sources (NYI)
- - Download latest Chapters automatically (NYI)
- - Bookmark your favourite Mangas (NYI)
+
+ - Manga
+	 - Sources:
+		 - Mangafox.me
+		 - Batoto **(NYI)**
+		 - MangaEden **(NYI)**
+	 - Features
+		 - Get all Mangas
+		 - Order Mangas **(NYI)**
+		 - Get Manga Details
+		 - Load & read Chapters
+ - Anime
+	 - Multiple Sources **(NYI)**
+	 - Stream Anime over Torrents **(NYI)**
+	 - Stream Anime over web player **(NYI)**
+	 - List all Animes **(NYI)**
+	 - Order Animes **(NYI)**
+	 - Get Anime Detail (inkl Ratings) **(NYI)**
+ - Settings **(NYI)**
 
 Installation
 -------
@@ -16,7 +32,7 @@ Currently the only way to install it is to download the source code and run the 
     # npm install -g grunt-cli bower
     # npm install
     # bower install
-    # grunt nwjs
+    # grunt build
 
 A built version will then be placed in the *build* folder.
 To change the build platform you simply have to change the platform parameter in the *Gruntfile.js*
