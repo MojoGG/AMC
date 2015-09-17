@@ -2,5 +2,9 @@ app.controller("readerController", function ($scope,$stateParams,mangaListFactor
     var mid = $stateParams.mid;
     var cid = $stateParams.cid;
 
-    mangaListFactory
+    $scope.imgindex = 0;
+
+    mangaListFactory.getChapter(mid,cid).then(function(data){
+        $scope.chapter = data;
+    })
 });

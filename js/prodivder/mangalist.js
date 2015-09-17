@@ -40,6 +40,32 @@ app.factory('mangaListFactory',function($q){
         return defer.promise;
     }
 
+    function getChapterPageCount(clink){
+        var defer = $q.defer();
+        X(clink, 'select > option',[{
+            pagecout:''
+        }])(function(err, obj) {
+            console.log(obj.length)
+            defer.resolve(obj)
+        });
+        return defer.promise;
+    }
+
+    function loadChapter(clink){
+        console.log(clink);
+        var defer = $q.defer();
+        getChapterPageCount(clink).then(function(data){
+            X(clink,'div#viewer',[{
+                img:'#image@src'
+            }]).paginate('div#viewer > a@href').limit(data.length)(function(err,imgdata){
+                console.log(JSON.stringify(imgdata));
+                defer.resolve(imgdata);
+            });
+        })
+
+        return defer.promise;
+    }
+
     return {
         getMangaList : function(){
             return mangas;
@@ -57,7 +83,20 @@ app.factory('mangaListFactory',function($q){
             })
         },
         getChapter: function(mid, cid){
-
+            return mangas.then(function(data){
+                //console.log(JSON.stringify(data))
+                return loadMangaDetail(data[mid]).then(function(details){
+                    //console.log(JSON.stringify(details));
+                    //console.log(JSON.stringify(data[id]));
+                    mangas[mid] = _.extend(data[mid],details);
+                    //console.log(JSON.stringify(mangas[id]))
+                    return loadChapter(data[mid]["chapters"][cid]["link"]).then(function(chapterdetails){
+                        //console.log(JSON.stringify(chapterdetails));
+                        mangas[mid]["chapters"][cid]["images"] = chapterdetails;
+                        return mangas[mid]["chapters"][cid];
+                    })
+                })
+            })
         }
     }
 })
