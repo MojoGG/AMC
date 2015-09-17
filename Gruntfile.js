@@ -32,10 +32,22 @@ module.exports = function(grunt) {
                     // https://github.com/taptapship/wiredep#configuration
                 }
             }
+        },
+        uglify: {
+            my_target: {
+                files: [{
+                    expand: true,
+                    cwd: 'js',
+                    src: '**/*.js',
+                    dest: 'cache/js'
+                }]
+            }
         }
-    })
+    });
 
     grunt.loadNpmTasks('grunt-nw-builder');
     grunt.loadNpmTasks('grunt-wiredep');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
+    grunt.task.registerTask('build', ['wiredep','nwjs'])
 };
