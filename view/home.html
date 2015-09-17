@@ -15,7 +15,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat="item in mangas track by $index">
                 <div class="-align-center text-center">
 
-                    <a ui-sref='manga({ mid: {{$index}} })'>
+                    <a ui-sref='manga({ mid: {{item.id}} })'>
                         <img ng-src="{{item.img}}" alt="{{item.title}}" width="150" />
                     </a>
                     <h4>{{item.title}}</h4>

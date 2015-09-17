@@ -28,7 +28,7 @@
                     <th class="col-md-10">Chapter</th>
                     <th class="col-md-2">Read</th>
                 </tr>
-                    <tr ng-repeat="ch in manga.chapters">
+                    <tr ng-repeat="ch in manga.chapters.slice().reverse()">
                         <td>{{ch.chapter}} {{ch.title}}</td>
                         <td><button ui-sref='reader({ mid: {{mid}},cid:{{$index}} })' class="btn btn-success">READ</button></td>
                     </tr>

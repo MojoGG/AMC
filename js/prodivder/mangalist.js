@@ -22,7 +22,7 @@ app.factory('mangaListFactory',function($q){
         return defer.promise;
     }
 
-    function loadMangaDetail(m){
+    function loadMangaDetail(m,id){
         var defer = $q.defer();
         X(m["link"], 'div.left',[{
             img:'div.cover > img@src',
@@ -35,6 +35,7 @@ app.factory('mangaListFactory',function($q){
         }])(function(err, obj) {
             console.log("Single Manga Download Done " + err);
             //console.log(JSON.stringify(obj[1]["chapters"]));
+            obj[1]["id"] = id;
             defer.resolve(obj[1]);
         })
         return defer.promise;
@@ -73,7 +74,7 @@ app.factory('mangaListFactory',function($q){
         getSingleManga : function(id){
             return mangas.then(function(data){
                 //console.log(JSON.stringify(data))
-                return loadMangaDetail(data[id]).then(function(details){
+                return loadMangaDetail(data[id],id).then(function(details){
                     //console.log(JSON.stringify(details));
                     //console.log(JSON.stringify(data[id]));
                     mangas[id] = _.extend(data[id],details);
@@ -85,7 +86,7 @@ app.factory('mangaListFactory',function($q){
         getChapter: function(mid, cid){
             return mangas.then(function(data){
                 //console.log(JSON.stringify(data))
-                return loadMangaDetail(data[mid]).then(function(details){
+                return loadMangaDetail(data[mid],mid).then(function(details){
                     //console.log(JSON.stringify(details));
                     //console.log(JSON.stringify(data[id]));
                     mangas[mid] = _.extend(data[mid],details);

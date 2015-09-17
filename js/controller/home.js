@@ -6,11 +6,11 @@ app.controller("homeController", function ($scope,mangaListFactory) {
         //console.log(data);
         //console.log(data.length)
         $scope.list = data;
-        mangaListFactory.getSingleManga(0).then(function(data){
-            //console.log("Pushed New Manga");
+        mangaListFactory.getSingleManga(0).then(function(singledata){
+            console.log("Pushed New Manga");
             //console.log(JSON.stringify(data))
             // console.log(data["0"]["img"])
-            $scope.mangas.push(data);
+            $scope.mangas.push(singledata);
         });
         $scope.scrollstop = false;
     });
@@ -20,7 +20,7 @@ app.controller("homeController", function ($scope,mangaListFactory) {
         for(var i = 1; i <= 10; i++) {
             mangaListFactory.getSingleManga(last+i).then(function(data){
                 console.log("Pushed New Manga");
-                //console.log(data["0"]["img"])
+                //console.log(JSON.stringify(data))
                 $scope.mangas.push(data);
             });
             //console.log($scope.mangas[last+i]["title"])
