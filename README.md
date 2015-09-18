@@ -7,7 +7,7 @@ Features
 Features with an (NYI) are **Not Yet Implemented**
 
  - Manga
-	 - Sources:
+	 - Sources
 		 - Mangafox.me
 		 - Batoto **(NYI)**
 		 - MangaEden **(NYI)**
@@ -17,12 +17,15 @@ Features with an (NYI) are **Not Yet Implemented**
 		 - Get Manga Details
 		 - Load & read Chapters
  - Anime
-	 - Multiple Sources **(NYI)**
-	 - Stream Anime over Torrents **(NYI)**
-	 - Stream Anime over web player **(NYI)**
-	 - List all Animes **(NYI)**
-	 - Order Animes **(NYI)**
-	 - Get Anime Detail (inkl Ratings) **(NYI)**
+	 - Sources
+		 - KissAnime **(NYI)**
+		 - haruhichan **(NYI)**
+	 - Features
+		 - Stream Anime over Torrents **(NYI)**
+		 - Stream Anime over web player **(NYI)**
+		 - List all Animes **(NYI)**
+		 - Order Animes **(NYI)**
+		 - Get Anime Detail (inkl Ratings) **(NYI)**
  - Settings **(NYI)**
 
 Installation
@@ -44,3 +47,13 @@ To change the build platform you simply have to change the platform parameter in
                 keep_nw: true,
                 embed_nw: false,
             },
+
+Libaries & Modules
+-------
+All of the features above are only possible thanks to a lot of great libaries and Modules so i want to credit them on this page!
+
+ - [X-Ray](https://github.com/lapwinglabs/x-ray)
+ - [CloudScraper](https://github.com/codemanki/cloudscraper)
+ - [Angular Hotkeys](https://github.com/chieffancypants/angular-hotkeys)
+ - [AdminLTE](https://almsaeedstudio.com/) & [Bootstrap](http://getbootstrap.com/)
+ - [ngInfiniteScroll](https://github.com/sroze/ngInfiniteScroll)

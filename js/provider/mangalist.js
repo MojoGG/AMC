@@ -3,10 +3,11 @@ app.factory('mangaListFactory',function($q){
     var Xray = require('x-ray');
     var X = Xray();
     var _ = require('underscore')
+    var fs = require('fs');
 
     var mangas = loadMangas().then(function(data){
         return data;
-    })
+    });
 
     function loadMangas(){
         //console.log("starting Download!");
@@ -16,9 +17,16 @@ app.factory('mangaListFactory',function($q){
             link: 'a@href'
         }])(function(err, obj) {
             console.log("Mangalist Download Done " + err);
-            //console.log(JSON.stringify(obj))
+            var date = new Date();
+            obj["date"] = date;
+            fs.writeFile("./tmp/manga", JSON.stringify(obj), function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+                console.log("The file was saved!");
+            });
             defer.resolve(obj);
-        })
+        });
         return defer.promise;
     }
 

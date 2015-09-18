@@ -3,11 +3,15 @@ app.controller("homeAnimeController", function ($scope,kissanimeFactory) {
     $scope.scrollstop = true;
     $scope.list;
 
+
+
     kissanimeFactory.getAllAnime().then(function(data){
         //console.log(data);
         //console.log(data.length)
         $scope.list = data;
-        kissanimeFactory.getSingleAnime(data[0]["url"]).then(function());
+        kissanimeFactory.getSingleAnime(data[0]["url"]).then(function(data){
+            console.log(JSON.stringify(data));
+        });
         $scope.scrollstop = false;
     });
 
