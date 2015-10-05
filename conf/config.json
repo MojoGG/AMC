@@ -1,4 +1,8 @@
 {
   "language": "en",
-  "anime_stream": "torrent"
+  "anime_stream": "torrent",
+  "style":{
+    "name":"skin-red",
+    "path":"./plugins/AdminLTE/dist/css/skins/skin-red.min.css"
+  }
 }

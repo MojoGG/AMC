@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html data-ng-app="AniMan" >
-<head>
+<head data-ng-controller="mainController" ng-init="getConfig()">
     <meta charset="UTF-8">
     <base href="./index.html#/" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    <link rel="stylesheet" data-ng-href="{{settings.style.path}}" />
+
     <!--CSS -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="plugins/AdminLTE/dist/css/skins/_all-skins.min.css" />
     <link rel="stylesheet" href="plugins/AdminLTE/dist/css/AdminLTE.css" />
     <link rel="stylesheet" href="plugins/angular-hotkeys/build/hotkeys.min.css" />
     <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.css" />
@@ -21,7 +22,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="skin-blue hold-transition sidebar-mini" data-ng-controller="mainController">
+<body  class="{{settings.style.name}} hold-transition sidebar-mini">
 
 <!-- content -->
 <div class="wrapper">
@@ -143,7 +144,7 @@
                             <!-- The user image in the navbar-->
                             <img src="http://placehold.it/160x160" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs">Paradoxon</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -340,6 +341,7 @@
 <script src="js/provider/mangalist.js"></script>
 <script src="js/provider/kissanime.js"></script>
 <script src="js/provider/haruhichan.js"></script>
+<script src="js/provider/settings.js"></script>
 
 </body>
 </html>

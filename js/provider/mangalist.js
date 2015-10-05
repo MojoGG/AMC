@@ -4,30 +4,48 @@ app.factory('mangaListFactory',function($q){
     var X = Xray();
     var _ = require('underscore')
     var fs = require('fs');
+    var moment = require('moment');
 
     var mangas = loadMangas().then(function(data){
         return data;
     });
 
-    function loadMangas(){
-        //console.log("starting Download!");
+    function checkManga(){
         var defer = $q.defer();
-        X('http://mangafox.me/manga', 'div.left > div.manga_list > ul > li',[{
-            title: 'a',
-            link: 'a@href'
-        }])(function(err, obj) {
-            console.log("Mangalist Download Done " + err);
-            var date = new Date();
-            obj["date"] = date;
-            fs.writeFile("./tmp/manga", JSON.stringify(obj), function(err) {
-                if(err) {
-                    return console.log(err);
-                }
-                console.log("The file was saved!");
-            });
-            defer.resolve(obj);
+        fs.stat("./cache/mangas.json",function(data){
+            console.log(JSON.stringify(data));
+            defer.resolve(data);
         });
         return defer.promise;
+    }
+
+    function loadMangas(){
+        //console.log("starting Download!");
+        return checkManga().then(function (data) {
+            var mangacache = require('./cache/mangas.json');
+            var date = new Date();
+            var startDate = moment(mangacache["birthtime"], 'YYYY-M-DD HH:mm:ss')
+            var endDate = moment(date, 'YYYY-M-DD HH:mm:ss');
+            var hoursdiff = endDate.diff(startDate, 'hours')
+            if(hoursdiff < 24){
+                return mangacache;
+            }
+            var defer = $q.defer();
+            X('http://mangafox.me/manga', 'div.left > div.manga_list > ul > li', [{
+                title: 'a',
+                link: 'a@href'
+            }])(function (err, obj) {
+                console.log("Mangalist Download Done " + err);
+                fs.writeFile("cache/mangas.json", JSON.stringify(obj), function (err) {
+                    if (err) {
+                        return console.log(JSON.stringify(err));
+                    }
+                    console.log("The file was saved!");
+                });
+                defer.resolve(obj);
+            });
+            return defer.promise;
+        });
     }
 
     function loadMangaDetail(m,id){
