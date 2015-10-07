@@ -19,7 +19,7 @@ Features with an (NYI) are **Not Yet Implemented**
  - Anime
 	 - Sources
 		 - KissAnime **(NYI)**
-		 - haruhichan **(NYI)**
+		 - Nyaa **(NYI)**
 	 - Features
 		 - Stream Anime over Torrents **(NYI)**
 		 - Stream Anime over web player **(NYI)**
@@ -27,6 +27,8 @@ Features with an (NYI) are **Not Yet Implemented**
 		 - Order Animes **(NYI)**
 		 - Get Anime Detail (inkl Ratings) **(NYI)**
  - Settings **(NYI)**
+	 - Different Designs **(NYI)**
+	 - Multiple Language **(NYI)**
 
 Installation
 -------

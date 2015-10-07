@@ -1,29 +1,27 @@
-app.controller("homeAnimeController", function ($scope,kissanimeFactory) {
+app.controller("homeAnimeController", function ($scope,$rootScope,NyaaFactory) {
     $scope.animes = new Array();
     $scope.scrollstop = true;
     $scope.list;
 
+    $scope.settings = $rootScope.settings;
 
+    $scope.loadData = function(){
+        console.log("INIT!");
+        if($scope.settings["anime_stream"] =='torrent'){
+            console.log("TORRENT!");
+            NyaaFactory.getAllAnime().then(function(data){
+                console.log("Fetched all animes");
+                $scope.list = data;
 
-    kissanimeFactory.getAllAnime().then(function(data){
-        //console.log(data);
-        //console.log(data.length)
-        $scope.list = data;
-        kissanimeFactory.getSingleAnime(data[0]["url"]).then(function(data){
-            console.log(JSON.stringify(data));
-        });
-        $scope.scrollstop = false;
-    });
+                $scope.scrollstop = false;
+            });
+        }
+    };
 
     $scope.loadMore = function(){
-        /*var last = $scope.animes.length - 1;
+        var last = $scope.animes.length - 1;
         for(var i = 1; i <= 10; i++) {
-            kissanimeFactory.getSingleManga(last+i).then(function(data){
-                console.log("Pushed New Manga");
-                //console.log(JSON.stringify(data))
-                $scope.mangas.push(data);
-            });
-            //console.log($scope.mangas[last+i]["title"])
-        }*/
+
+        }
     }
 });

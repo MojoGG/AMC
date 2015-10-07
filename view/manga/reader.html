@@ -1,6 +1,6 @@
 <section class="content-header">
 </section>
-<secction class="content">
+<section class="content">
     <div ng-show="chapter == null" class="overlay row text-center">
         <div class="col-md-4 col-md-offset-4">
             <div class="box box-info"><h1> <i class="fa fa-refresh fa-spin"></i><br />
@@ -11,4 +11,4 @@
     <div ng-repeat="img in chapter.images track by $index">
         <img ng-if="imgindex == $index" ng-src="{{img.img}}" class="img-responsive"/>
     </div>
-</secction>
+</section>
