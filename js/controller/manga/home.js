@@ -15,13 +15,19 @@ app.controller("homeController", function ($scope,mangaListFactory) {
         $scope.scrollstop = false;
     });
 
+    $scope.checkid = function(){
+
+    }
+
     $scope.loadMore = function(){
         var last = $scope.mangas.length - 1;
         for(var i = 1; i <= 10; i++) {
             mangaListFactory.getSingleManga(last+i).then(function(data){
                 console.log("Pushed New Manga");
                 //console.log(JSON.stringify(data))
-                $scope.mangas.push(data);
+                if(!_.contains($scope.mangas,data)) {
+                    $scope.mangas.push(data);
+                }
             });
             //console.log($scope.mangas[last+i]["title"])
         }

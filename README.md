@@ -23,11 +23,11 @@ Features with an (NYI) are **Not Yet Implemented**
 	 - Features
 		 - Stream Anime over Torrents **(NYI)**
 		 - Stream Anime over web player **(NYI)**
-		 - List all Animes **(NYI)**
+		 - List all Animes
 		 - Order Animes **(NYI)**
 		 - Get Anime Detail (inkl Ratings) **(NYI)**
  - Settings **(NYI)**
-	 - Different Designs **(NYI)**
+	 - Different Designs (Different AdimLTE designs)
 	 - Multiple Language **(NYI)**
 
 Installation

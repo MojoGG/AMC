@@ -10,6 +10,7 @@
 
     <!--CSS -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="plugins/AdminLTE/dist/css/skins/_all-skins.min.css" />
     <link rel="stylesheet" href="plugins/AdminLTE/dist/css/AdminLTE.css" />
     <link rel="stylesheet" href="plugins/angular-hotkeys/build/hotkeys.min.css" />
     <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.css" />
@@ -220,7 +221,7 @@
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a ui-sref="/"><i class="fa fa-pencil"></i> <span>Mangas</span></a></li>
-                <li><a ui-sref="anime"><i class="fa fa-video-camera"></i> <span>Anime</span></a></li>
+                <li><a ui-sref="ahome"><i class="fa fa-video-camera"></i> <span>Anime</span></a></li>
                 <li class="treeview">
                     <a ui-sref="nyi"><i class="fa fa-cogs"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
@@ -336,11 +337,12 @@
 <script src="./js/controller/nyi.js"></script>
 <script src="./js/controller/manga/reader.js"></script>
 <script src="./js/controller/anime/home.js"></script>
+<script src="./js/controller/anime/singleAnime.js"></script>
 
 <!-- Provider -->
 <script src="./js/provider/mangalist.js"></script>
 <script src="./js/provider/settings.js"></script>
-<script src="./js/provider/Nyaa.js"></script>
+<script src="js/provider/animeNewsNetwork.js"></script>
 
 </body>
 </html>

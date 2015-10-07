@@ -12,9 +12,15 @@
         </div>
     </div>
     <div ng-show="animes.length > 0" infinite-scroll='loadMore()' infinite-scroll-disabled="scrollstop">
-        <div class="col-lg-2 col-md-3 col-sm-4" ng-repeat="item in animes track by $index">
-            <div class="-align-center text-center">
-                <h4>{{item.name[0]}}</h4>
+        <div ng-repeat="item in animes track by $index">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="-align-center text-center thumbnail">
+                    <a ui-sref='anime({ aid: {{item.id}} })'>
+                        <img ng-if="item.img" ng-src="{{item.img}}" alt="{{item.name}}" width="150" height="200" />
+                        <div ng-if="!item.img" class="thumbnail" style="width: 150px;height: 200px;"><i style="font-size: xx-large" class="fa fa-frown-o"></i> <h3>No Image Found!</h3></div>
+                    </a>
+                    <h5>{{item.name}}</h5>
+                </div>
             </div>
         </div>
         <div style='clear: both;'></div>

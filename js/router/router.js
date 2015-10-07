@@ -16,10 +16,14 @@ app.config(function ($stateProvider,$urlRouterProvider) {
                 mid:'0',
                 cid:'0'
             }
-        }).state('anime',{
-            url:'/anime',
+        }).state('ahome',{
+            url:'/ahome',
             templateUrl: './view/anime/home.html',
             controller:'homeAnimeController'
+        }).state('anime',{
+            url:'/anime?aid',
+            templateUrl: './view/anime/singleAnime.html',
+            controller:'singleAnimeController'
         }).state('nyi',{
             url:'/nyi?version',
             templateUrl: './view/nyi.html',

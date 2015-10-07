@@ -1,4 +1,5 @@
-app.controller("homeAnimeController", function ($scope,$rootScope,NyaaFactory) {
+var _ = require('underscore');
+app.controller("homeAnimeController", function ($scope,$rootScope,AnimeNewsNetworkFactory) {
     $scope.animes = new Array();
     $scope.scrollstop = true;
     $scope.list;
@@ -9,10 +10,15 @@ app.controller("homeAnimeController", function ($scope,$rootScope,NyaaFactory) {
         console.log("INIT!");
         if($scope.settings["anime_stream"] =='torrent'){
             console.log("TORRENT!");
-            NyaaFactory.getAllAnime().then(function(data){
+            AnimeNewsNetworkFactory.getAllAnime().then(function(data){
                 console.log("Fetched all animes");
                 $scope.list = data;
 
+                //$scope.animes.push($scope.list[0]);
+                AnimeNewsNetworkFactory.getSingleAnime($scope.list[0]["id"][0]).then(function(data){
+                    $scope.animes.push(data);
+                    console.log(JSON.stringify(data));
+                });
                 $scope.scrollstop = false;
             });
         }
@@ -21,7 +27,13 @@ app.controller("homeAnimeController", function ($scope,$rootScope,NyaaFactory) {
     $scope.loadMore = function(){
         var last = $scope.animes.length - 1;
         for(var i = 1; i <= 10; i++) {
-
+            //console.log(JSON.stringify($scope.list[last+i]["id"][0]));
+            AnimeNewsNetworkFactory.getSingleAnime($scope.list[last+i]["id"][0]).then(function(data){
+                if(!_.contains($scope.animes,data)) {
+                    $scope.animes.push(data);
+                    console.log(JSON.stringify(data));
+                }
+            });
         }
     }
 });
