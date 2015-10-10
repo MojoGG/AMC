@@ -10,12 +10,22 @@ module.exports = function(grunt) {
                 embed_nw: false,
             },
             src: [
+                './package.json',
                 './index.html',
                 './plugins/**',
                 './js/**',
                 './view/**',
                 './img/**',
-                './package.json'
+                './node_modules/**',
+                './conf/**',
+                '!./node_modules/nw-gyp/**',
+                '!./node_modules/**/*.bin',
+                '!./node_modules/**/*.c',
+                '!./node_modules/**/*.h',
+                '!./node_modules/**/Makefile',
+                '!./node_modules/**/*.h',
+                '!./node_modules/bower/**',
+                '!./node_modules/*grunt*/**'
             ]
         },
         wiredep: {

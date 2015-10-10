@@ -55,7 +55,7 @@ app.factory('AnimeNewsNetworkFactory',function($q,$http){
                     //console.log(data);
                     parseString(data, function (err, result) {
                         console.log("Parse successfull!");
-                        //console.log(JSON.stringify(result["ann"]["anime"][0]["info"][0]["$"]));
+                        console.log(JSON.stringify(result["ann"]["anime"][0]));
                         defer.resolve({
                             id : id,
                             name : result["ann"]["anime"][0]["$"]["name"],
