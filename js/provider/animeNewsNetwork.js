@@ -22,12 +22,7 @@ app.factory('AnimeNewsNetworkFactory',function($q,$http){
                 //console.log(JSON.stringify(result["report"]["item"]));
                 defer.resolve(result["report"]["item"]);
                 //console.log(JSON.stringify(result));
-                fs.writeFile("./cache/animes.json", JSON.stringify(result), function (err) {
-                    if (err) {
-                        return console.log(JSON.stringify(err));
-                    }
-                    console.log("The file was saved!");
-                });
+                db('anime').push(result);
             });
         }).error(function(){
             alert("error");

@@ -5,58 +5,39 @@ app.factory('mangaListFactory',function($q){
     var _ = require('underscore');
     var fs = require('fs');
     var moment = require('moment');
+    var timespan = require('timespan');
+    var path = require('path');
 
     var mangas = loadMangas().then(function(data){
         return data;
     });
 
+    function loadMangaList(){
+        var defer = $q.defer();
+        X('http://mangafox.me/manga', 'div.left > div.manga_list > ul > li', [{
+            title: 'a',
+            link: 'a@href'
+        }])(function (err, obj) {
+            console.log("Mangalist Download Done " + err);
+            defer.resolve(obj);
+        });
+        return defer.promise;
+    }
+
     function loadMangas(){
         var defer = $q.defer();
-        fs.readFile( './cache/mangas.json', function (err, data) {
-            if (err) {
-                X('http://mangafox.me/manga', 'div.left > div.manga_list > ul > li', [{
-                    title: 'a',
-                    link: 'a@href'
-                }])(function (err, obj) {
-                    console.log("Mangalist Download Done " + err);
-                    fs.writeFile("./cache/mangas.json", JSON.stringify(obj), function (err) {
-                        if (err) {
-                            return console.log(JSON.stringify(err));
-                        }
-                        console.log("The file was saved!");
-                    });
-                    defer.resolve(obj);
-                });
-            }
-            var mangacache = JSON.parse(data);
-            var date = new Date();
-            var startDate = moment(mangacache["birthtime"], 'YYYY-M-DD HH:mm:ss')
-            var endDate = moment(date, 'YYYY-M-DD HH:mm:ss');
-            var hoursdiff = endDate.diff(startDate, 'hours');
-            console.log(hoursdiff);
-            if (hoursdiff < 24) {
-                console.log("CACHE!!!");
-                defer.resolve(mangacache);
-            }else{
-                X('http://mangafox.me/manga', 'div.left > div.manga_list > ul > li', [{
-                    title: 'a',
-                    link: 'a@href'
-                }])(function (err, obj) {
-                    console.log("Mangalist Download Done " + err);
-                    fs.writeFile("./cache/mangas.json", JSON.stringify(obj), function (err) {
-                        if (err) {
-                            return console.log(JSON.stringify(err));
-                        }
-                        console.log("The file was saved!");
-                    });
-                    defer.resolve(obj);
-                });
-            }
-        });
-        if(defer.promise.$$state.status){
-            return defer.promise;
+
+        if(!db.object.mangas){
+            logger.info("No cached mangas found");
+            loadMangaList().then(function(data){
+                db('mangas').push(data);
+                defer.resolve(data);
+            })
+        }else{
+            logger.info("Cached mangas found");
+            var mangalist = db('mangas').first();
+            defer.resolve(mangalist);
         }
-        //console.log("starting Download!");
         return defer.promise;
     }
 

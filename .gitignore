@@ -3,5 +3,6 @@ build
 cache
 .tmp
 .idea
+.logs
 plugins
 *.log
