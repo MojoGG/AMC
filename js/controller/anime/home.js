@@ -7,17 +7,16 @@ app.controller("homeAnimeController", function ($scope,$rootScope,AnimeNewsNetwo
     $scope.settings = $rootScope.settings;
 
     $scope.loadData = function(){
-        console.log("INIT!");
         if($scope.settings["anime_stream"] =='torrent'){
-            console.log("TORRENT!");
+            logger.info("TORRENT!");
             AnimeNewsNetworkFactory.getAllAnime().then(function(data){
-                console.log("Fetched all animes");
+                logger.info("Fetched all animes");
                 $scope.list = data;
 
                 //$scope.animes.push($scope.list[0]);
                 AnimeNewsNetworkFactory.getSingleAnime($scope.list[0]["id"][0]).then(function(data){
                     $scope.animes.push(data);
-                    console.log(JSON.stringify(data));
+                    //console.log(JSON.stringify(data));
                 });
                 $scope.scrollstop = false;
             });
@@ -31,7 +30,7 @@ app.controller("homeAnimeController", function ($scope,$rootScope,AnimeNewsNetwo
             AnimeNewsNetworkFactory.getSingleAnime($scope.list[last+i]["id"][0]).then(function(data){
                 if(!_.contains($scope.animes,data)) {
                     $scope.animes.push(data);
-                    console.log(JSON.stringify(data));
+                    //console.log(JSON.stringify(data));
                 }
             });
         }

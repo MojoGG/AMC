@@ -77,7 +77,7 @@ app.factory('mangaListFactory',function($q){
             X(clink,'div#viewer',[{
                 img:'#image@src'
             }]).paginate('div#viewer > a@href').limit(data.length)(function(err,imgdata){
-                logger.info(JSON.stringify(imgdata));
+                //logger.info(JSON.stringify(imgdata));
                 imgdata["count"] = data.length;
                 defer.resolve(imgdata);
             });

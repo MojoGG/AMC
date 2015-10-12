@@ -3,8 +3,8 @@ app.controller("singleAnimeController", function ($scope,$stateParams,AnimeNewsN
     $scope.anime;
 
     AnimeNewsNetworkFactory.getSingleAnime($scope.aid).then(function(data){
-        console.log(JSON.stringify(data))
+        logger.info(JSON.stringify(data))
         $scope.manga = data;
-    })
+    });
 
 });

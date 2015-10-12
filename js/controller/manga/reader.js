@@ -11,7 +11,7 @@ app.controller("readerController", function ($scope,$stateParams,mangaListFactor
     $scope.loadChapter = function(){
         mangaListFactory.getChapter(mid,cid).then(function(data){
             $scope.chapter = data;
-            console.log(JSON.stringify(data));
+            //console.log(JSON.stringify(data));
             $scope.imgindex = 0;
         });
     };
@@ -22,6 +22,7 @@ app.controller("readerController", function ($scope,$stateParams,mangaListFactor
         callback: function() {
             if($scope.chapter["count"] == $scope.imgindex){
                 cid++;
+                logger.info("Next Page");
                 $scope.loadChapter();
             }else {
                 $scope.imgindex++;
@@ -33,6 +34,7 @@ app.controller("readerController", function ($scope,$stateParams,mangaListFactor
         callback: function() {
             if($scope.chapter["count"] == 0){
                 cid--;
+                logger.info("Previous Page");
                 $scope.loadChapter();
             }else {
                 $scope.imgindex--;

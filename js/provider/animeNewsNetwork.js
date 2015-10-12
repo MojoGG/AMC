@@ -18,14 +18,14 @@ app.factory('AnimeNewsNetworkFactory',function($q,$http){
         }).success(function(data){
             //console.log(data);
             parseString(data, function (err, result) {
-                console.log("Parse successfull!");
+                logger.info("Parse successfull!");
                 //console.log(JSON.stringify(result["report"]["item"]));
                 defer.resolve(result["report"]["item"]);
                 //console.log(JSON.stringify(result));
                 db('anime').push(result);
             });
         }).error(function(){
-            alert("error");
+            logger.error("error");
         });
 
         return defer.promise;
@@ -49,8 +49,8 @@ app.factory('AnimeNewsNetworkFactory',function($q,$http){
                 }).success(function(data){
                     //console.log(data);
                     parseString(data, function (err, result) {
-                        console.log("Parse successfull!");
-                        console.log(JSON.stringify(result["ann"]["anime"][0]));
+                        logger.info("Parse successfull!");
+                        //console.log(JSON.stringify(result["ann"]["anime"][0]));
                         defer.resolve({
                             id : id,
                             name : result["ann"]["anime"][0]["$"]["name"],
@@ -58,7 +58,7 @@ app.factory('AnimeNewsNetworkFactory',function($q,$http){
                         });
                     });
                 }).error(function(err){
-                    console.log("Error!");
+                 logger.error("Error!");
                 });
             return defer.promise;
         }

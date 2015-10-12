@@ -5,7 +5,7 @@ app.controller("mainController", function ($scope,settingsFactory,$rootScope) {
     $scope.helloworld = "Test Hello World";
 
     $scope.getStyle = function(){
-        console.log('skin-'+$scope.settings["style"]["name"]);
+        logger.info('skin-'+$scope.settings["style"]["name"]);
         return 'skin-' + $scope.settings["style"]["name"];
     }
 });
