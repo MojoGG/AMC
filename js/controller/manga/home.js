@@ -7,7 +7,7 @@ app.controller("homeController", function ($scope,mangaListFactory) {
         //console.log(data.length)
         $scope.list = data;
         mangaListFactory.getSingleManga(0).then(function(singledata){
-            console.log("Pushed New Manga");
+            logger.info("Pushed New Manga into Manga Array");
             //console.log(JSON.stringify(data))
             // console.log(data["0"]["img"])
             $scope.mangas.push(singledata);
@@ -15,15 +15,11 @@ app.controller("homeController", function ($scope,mangaListFactory) {
         $scope.scrollstop = false;
     });
 
-    $scope.checkid = function(){
-
-    }
-
     $scope.loadMore = function(){
         var last = $scope.mangas.length - 1;
         for(var i = 1; i <= 10; i++) {
             mangaListFactory.getSingleManga(last+i).then(function(data){
-                console.log("Pushed New Manga");
+                logger.info("Pushed New Manga into Manga Array");
                 //console.log(JSON.stringify(data))
                 if(!_.contains($scope.mangas,data)) {
                     $scope.mangas.push(data);

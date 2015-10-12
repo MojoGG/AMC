@@ -18,7 +18,7 @@ app.factory('mangaListFactory',function($q){
             title: 'a',
             link: 'a@href'
         }])(function (err, obj) {
-            console.log("Mangalist Download Done " + err);
+            logger.info("Mangalist Download Done " + err);
             defer.resolve(obj);
         });
         return defer.promise;
@@ -52,11 +52,11 @@ app.factory('mangaListFactory',function($q){
                 link:'a@href'
             }])
         }])(function(err, obj) {
-            console.log("Single Manga Download Done " + err);
+            logger.info("Single Manga Download Done " + err);
             //console.log(JSON.stringify(obj[1]["chapters"]));
             obj[1]["id"] = id;
             defer.resolve(obj[1]);
-        })
+        });
         return defer.promise;
     }
 
@@ -65,24 +65,23 @@ app.factory('mangaListFactory',function($q){
         X(clink, 'select > option',[{
             pagecout:''
         }])(function(err, obj) {
-            console.log(obj.length)
             defer.resolve(obj)
         });
         return defer.promise;
     }
 
     function loadChapter(clink){
-        console.log(clink);
+        //console.log(clink);
         var defer = $q.defer();
         getChapterPageCount(clink).then(function(data){
             X(clink,'div#viewer',[{
                 img:'#image@src'
             }]).paginate('div#viewer > a@href').limit(data.length)(function(err,imgdata){
-                console.log(JSON.stringify(imgdata));
+                logger.info(JSON.stringify(imgdata));
                 imgdata["count"] = data.length;
                 defer.resolve(imgdata);
             });
-        })
+        });
 
         return defer.promise;
     }

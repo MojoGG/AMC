@@ -42,7 +42,6 @@ module.exports = function(grunt) {
         nwjs: {
             options: {
                 version: '0.12.1',
-                platforms: ['linux64'],
                 build_dir: './build', // Where the build version of my node-webkit app is saved
                 keep_nw: true,
                 embed_nw: false,

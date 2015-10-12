@@ -11,9 +11,10 @@ app.controller("readerController", function ($scope,$stateParams,mangaListFactor
     $scope.loadChapter = function(){
         mangaListFactory.getChapter(mid,cid).then(function(data){
             $scope.chapter = data;
+            console.log(JSON.stringify(data));
             $scope.imgindex = 0;
         });
-    }
+    };
 
     hotkeys.bindTo($scope).add({
         combo:'right',
