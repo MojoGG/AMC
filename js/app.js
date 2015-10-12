@@ -18,7 +18,7 @@ var logger = new (winston.Logger)({
         }),
         new (winston.transports.File)({
             name: 'error-file',
-            filename: path.join(gui.App.dataPath, 'filelog-info.error'),
+            filename: path.join(gui.App.dataPath, 'filelog-error.log'),
             level: 'error'
         })
     ]

@@ -1,6 +1,3 @@
-/**
- * Created by Moritz Egger on 9/18/15.
- */
 app.factory('settingsFactory',function($q){
     var config = require('./conf/config.json');
 
@@ -12,7 +9,6 @@ app.factory('settingsFactory',function($q){
         defaults.style.path = "./plugins/AdminLTE/dist/css/skins/skin-red.min.css";
 
         logger.info("Default Settings init", defaults);
-
         config = defaults;
     }
 
